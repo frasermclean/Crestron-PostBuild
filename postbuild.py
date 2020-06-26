@@ -1,12 +1,27 @@
+import sys
 import pysftp
 
-# variables (edit these to suit your environment)
-hostname = "rmc3"
-username = "fez"
-progNum = 1
+# print command line options
+def printHelp():
+  print('Crestron Simpl#Pro Post Build Script')
+  print('Usage: ', sys.argv[0], 'hostname username')
 
-# get program directory
-progDir = "/program0" + str(progNum) + "/"
+# connect to sftp server
+def pushFileToServer(hostname, username, progNum):
+  # get program directory
+  progDir = "/program0" + str(progNum) + "/"
 
-with pysftp.Connection(hostname, username=username, default_path=progDir) as sftp:
-  print(sftp.listdir())
+  with pysftp.Connection(hostname, username=username, default_path=progDir) as sftp:
+    print(sftp.listdir())
+
+# code entry point
+if (len(sys.argv) != 4):
+  printHelp()
+  exit()
+
+# get variables from arguments
+hostname = sys.argv[1]
+username = sys.argv[2]
+progNum = sys.argv[3]
+
+pushFileToServer(hostname, username, progNum)
