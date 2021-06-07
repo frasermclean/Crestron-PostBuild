@@ -4,7 +4,7 @@ This repository contains a post build script automating the process of uploading
 ## Requirements
 The script uses Microsoft PowerShell and the Crestron EDK. PowerShell is included with modern Windows installations but the Crestron EDK needs to be installed from https://sdkcon78221.crestron.com/sdk/Crestron_EDK_SDK/Content/Topics/Home.htm
 
-# Configuration file
+## Configuration file
 The JSON configuration file should reside in the same directory as the project. By default, the script looks for a file named ProcessorConfig.json. This file defines the hostname and authentication details used to communicate with the Crestron processor. There is a sample file in this repository for reference.
 
 ## Adding the script to your post-build event
